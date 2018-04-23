@@ -21,8 +21,9 @@ for(irun in 1:nruns){
 	file_list = list.files(paste0('data/routed/', run_sel), pattern = '*.day')
 	for(ifile in 1:length(file_list)){
 		file_temp = file_list[ifile]
-		name_temp = file_path_sans_ext(file_temp)	
-		loca_sim_temp = fread(paste0('data/routed/', run_sel, '/', file_temp)) %>% setNames(header_list)
+		name_temp = file_path_sans_ext(file_temp)
+		loca_sim_temp = fread(paste0('data/routed/', run_sel, '/', file_temp)) %>%
+			setNames(header_list)
 		loca_sim_temp$sta_name = name_temp
 		loca_sim_temp$run = run_sel
 		loca_sim = bind_rows(loca_sim, loca_sim_temp)
